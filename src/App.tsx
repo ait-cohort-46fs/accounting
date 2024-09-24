@@ -2,10 +2,10 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Guest from './components/Guest'
 import Profile from './components/Profile'
+import { useAppSelector } from './app/hooks';
 
 function App() {
-  // TODO get token from redux state
-  const token = 'gkfh';
+  const token = useAppSelector(state => state.token);
 
   return (
     <Routes>

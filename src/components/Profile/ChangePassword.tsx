@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { changePassword } from "../../features/api/accountApi";
 
 interface ChangePasswordProps {
     close: () => void
@@ -8,6 +10,7 @@ const ChangePassword = ({close}: ChangePasswordProps) => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const dispatch = useAppDispatch();
 
     const handleClickClear = () => {
         setOldPassword('');
@@ -16,9 +19,8 @@ const ChangePassword = ({close}: ChangePasswordProps) => {
     }
 
     const handleClickSave = () => {
-        // TODO Save updated updated password and close form
         if (newPassword === repeatPassword) {
-            alert('Save password');
+            dispatch(changePassword(newPassword));
             close();
         } else {
             alert('new password and repeat password are different');

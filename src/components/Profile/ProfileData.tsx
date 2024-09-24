@@ -1,13 +1,14 @@
+import { useAppSelector } from "../../app/hooks"
 
 const ProfileData = () => {
-    // TODO fill user profile
+    const {firstName, lastName, login, roles} = useAppSelector(state => state.user);
     return (
         <div>
-            <p>First name: ???</p>
-            <p>Last name: ???</p>
-            <p>Login: ???</p>
+            <p>First name: {firstName}</p>
+            <p>Last name: {lastName}</p>
+            <p>Login: {login}</p>
             <ul>
-                <li>User</li>
+                {roles.map(r => <li key={r}>{r}</li>)}
             </ul>
         </div>
     )

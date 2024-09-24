@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { updateUser } from "../../features/api/accountApi";
 
 interface ChangePasswordProps {
   close: () => void
 }
 
-const EditProfile = ({close}: ChangePasswordProps) => {
+const EditProfile = ({ close }: ChangePasswordProps) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const dispatch = useAppDispatch();
 
   const handleClickClear = () => {
     setFirstName('');
@@ -14,8 +17,7 @@ const EditProfile = ({close}: ChangePasswordProps) => {
   }
 
   const handleClickSave = () => {
-    // TODO Save updated profile and close form
-    alert('Save profile');
+    dispatch(updateUser({ firstName, lastName }));
     close();
   }
 

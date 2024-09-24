@@ -1,11 +1,15 @@
+import { useAppDispatch } from "../../app/hooks";
+import { deleteToken } from "../../features/slices/tokenSlice";
+import { deleteUser } from "../../features/slices/userSlice";
 import ProfileData from "./ProfileData"
 import UpdateUser from "./UpdateUser";
 
 const Profile = () => {
+    const dispatch = useAppDispatch();
 
     const handleClickLogout = () => {
-        // TODO Logout functionality
-        alert('Logout');
+        dispatch(deleteToken());
+        dispatch(deleteUser());
     }
 
     return (

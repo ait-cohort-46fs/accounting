@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { UserProfile } from "../../utils/type";
 import { fetchUser, registerUser, updateUser } from "../api/accountApi";
 
-// TODO add to reducers updateUser
 const userSlice = createSlice({
     name: "user",
     initialState: {} as UserProfile,
@@ -21,5 +20,5 @@ const userSlice = createSlice({
     }
 })
 
-export const { } = userSlice.actions;
+export const {putUser, deleteUser } = userSlice.actions;
 export default userSlice.reducer;
