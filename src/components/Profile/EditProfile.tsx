@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const EditProfile = () => {
+interface ChangePasswordProps {
+  close: () => void
+}
+
+const EditProfile = ({close}: ChangePasswordProps) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
@@ -12,11 +16,7 @@ const EditProfile = () => {
   const handleClickSave = () => {
     // TODO Save updated profile and close form
     alert('Save profile');
-  }
-
-  const handleClickClose = () => {
-    // TODO Close  edit profile without save
-    alert('Close  edit profile without save');
+    close();
   }
 
   return (
@@ -36,7 +36,7 @@ const EditProfile = () => {
         />
       </label>
       <button onClick={handleClickSave}>Save and Close</button>
-      <button onClick={handleClickClose}>Close without Save</button>
+      <button onClick={close}>Close without Save</button>
       <button onClick={handleClickClear}>Clear</button>
     </div>
   )

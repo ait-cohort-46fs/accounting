@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const ChangePassword = () => {
+interface ChangePasswordProps {
+    close: () => void
+}
+
+const ChangePassword = ({close}: ChangePasswordProps) => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
@@ -15,15 +19,12 @@ const ChangePassword = () => {
         // TODO Save updated updated password and close form
         if (newPassword === repeatPassword) {
             alert('Save password');
+            close();
         } else {
             alert('new password and repeat password are different');
         }
     }
 
-    const handleClickClose = () => {
-        // TODO Close change password without save
-        alert('Close change password without save');
-    }
 
     return (
         <div>
@@ -49,7 +50,7 @@ const ChangePassword = () => {
                 />
             </label>
             <button onClick={handleClickSave}>Save and Close</button>
-            <button onClick={handleClickClose}>Close without Save</button>
+            <button onClick={close}>Close without Save</button>
             <button onClick={handleClickClear}>Clear</button>
         </div>
     )
